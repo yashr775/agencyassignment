@@ -1,5 +1,7 @@
-import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+
+import { FaLandmark } from "react-icons/fa";
+import { FaWater } from "react-icons/fa";
+import { GiKidSlide } from "react-icons/gi";
 
 const Leftpart = () => {
     return (
@@ -9,7 +11,7 @@ const Leftpart = () => {
                 className="absolute left-[-120px] top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full flex items-center justify-center"
                 style={{
                     background:
-                        "conic-gradient(from 90deg, #E8E9F1 10deg, #FAD500 70deg, #FAD500 110deg, #E8E9F1 160deg, #E8E9F1)"
+                        "conic-gradient(from 90deg, #E8E9F1 10deg, #FAD500 70deg, #FAD500 110deg, #E8E9F1 160deg, #E8E9F1)",
                 }}
             >
                 {/* Inner Circle */}
@@ -25,18 +27,18 @@ const Leftpart = () => {
                     </div>
                 </div>
 
-                {/* --- Ride Icons with Labels --- */}
+                {/* --- Ride Icons with Labels on Right --- */}
 
                 {/* Land Ride */}
                 <div>
-                    <div className="absolute top-24 left-36 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
-                        <img
-                            src="/icons/landRides.svg"
-                            alt="Land Rides"
-                            className="transition-transform duration-300"
-                        />
+                    <div className="absolute top-24 right-20 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
+                        <FaLandmark size={50} />
                     </div>
-                    <div className="absolute top-24 left-56 text-white text-xl capitalize -translate-y-1/2">
+                    <div
+                        className="absolute top-24 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize"
+                        style={{ right: "-60px" }}
+                    >
+
                         <div>Land</div>
                         <div className="text-sm rounded-2xl px-3 py-1 bg-blue-400">73 Rides</div>
                     </div>
@@ -44,14 +46,14 @@ const Leftpart = () => {
 
                 {/* Water Ride */}
                 <div>
-                    <div className="absolute top-1/2 left-24 -translate-y-1/2 hover:cursor-pointer z-20">
-                        <img
-                            src="/icons/waterRides.svg"
-                            alt="Water Rides"
-                            className="scale-[1.4] transition-transform duration-300"
-                        />
+                    <div className="absolute top-1/2 right-1 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
+                        <FaWater size={50} />
                     </div>
-                    <div className="absolute top-1/2 left-44 -translate-y-1/2 text-white text-xl capitalize">
+                    <div
+                        className="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize"
+                        style={{ right: "-125px" }}
+                    >
+
                         <div>Water</div>
                         <div className="text-sm rounded-2xl px-3 py-1 bg-blue-400">54 Rides</div>
                     </div>
@@ -59,21 +61,20 @@ const Leftpart = () => {
 
                 {/* Kids Ride */}
                 <div>
-                    <div className="absolute bottom-20 left-36 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
-                        <img
-                            src="/icons/kidsRides.svg"
-                            alt="Kids Rides"
-                            className="transition-transform duration-300"
-                        />
+                    <div className="absolute bottom-15 right-20 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
+                        <GiKidSlide size={50} />
                     </div>
-                    <div className="absolute bottom-20 left-56 text-white text-xl capitalize -translate-y-1/2">
+                    <div
+                        className="absolute bottom-[60px] transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize"
+                        style={{ right: "-80px" }}
+                    >
+
                         <div>Kids</div>
                         <div className="text-sm rounded-2xl px-3 py-1 bg-blue-400">35 Rides</div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 };
 
