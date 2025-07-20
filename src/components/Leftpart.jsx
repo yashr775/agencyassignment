@@ -1,14 +1,25 @@
-
-import { FaLandmark } from "react-icons/fa";
-import { FaWater } from "react-icons/fa";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { FaLandmark, FaWater } from "react-icons/fa";
 import { GiKidSlide } from "react-icons/gi";
 
 const Leftpart = () => {
+    const [active, setActive] = useState("water");
+
+    const iconSize = 50;
+    const circleSize = 100;
+
+    const positions = {
+        land: { top: "3rem", right: "5rem" },
+        water: { top: "43%", right: "0.3rem" },
+        kids: { bottom: "60px", right: "5rem" },
+    };
+
     return (
         <div className="relative h-screen w-full bg-blue-950 overflow-hidden">
             {/* Half Ring Container */}
             <div
-                className="absolute left-[-120px] top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full flex items-center justify-center"
+                className="absolute left-[-130px] top-80 -translate-y-1/2 h-[600px] w-[600px] z-10 rounded-full flex items-center justify-center"
                 style={{
                     background:
                         "conic-gradient(from 90deg, #E8E9F1 10deg, #FAD500 70deg, #FAD500 110deg, #E8E9F1 160deg, #E8E9F1)",
@@ -27,48 +38,76 @@ const Leftpart = () => {
                     </div>
                 </div>
 
-                {/* --- Ride Icons with Labels on Right --- */}
+                {/* === Animated Selection Circle === */}
+                {active && (
+                    <motion.div
+                        key={active} // Forces re-render when active changes
+                        className="absolute z-30 border-4 border-yellow-300 rounded-full"
+                        style={{
+                            width: `${circleSize}px`,
+                            height: `${circleSize}px`,
+                            position: "absolute",
+                            ...positions[active],
+                            transform: "translate(-50%, -50%)",
+                        }}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    />
+                )}
 
-                {/* Land Ride */}
+                {/* === Land Ride === */}
                 <div>
-                    <div className="absolute top-24 right-20 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
-                        <FaLandmark size={50} />
-                    </div>
+                    <motion.div
+                        className="absolute top-24 right-20 transform -translate-x-1/2 -translate-y-1/2 z-20 hover:cursor-pointer"
+                        animate={{ scale: active === "land" ? 1.2 : 1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        onClick={() => setActive("land")}
+                    >
+                        <FaLandmark size={iconSize} />
+                    </motion.div>
                     <div
                         className="absolute top-24 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize"
-                        style={{ right: "-60px" }}
+                        style={{ right: "-80px" }}
                     >
-
                         <div>Land</div>
                         <div className="text-sm rounded-2xl px-3 py-1 bg-blue-400">73 Rides</div>
                     </div>
                 </div>
 
-                {/* Water Ride */}
+                {/* === Water Ride === */}
                 <div>
-                    <div className="absolute top-1/2 right-1 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
-                        <FaWater size={50} />
-                    </div>
+                    <motion.div
+                        className="absolute top-1/2 right-1 transform -translate-x-1/2 -translate-y-1/2 z-20 hover:cursor-pointer"
+                        animate={{ scale: active === "water" ? 1.2 : 1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        onClick={() => setActive("water")}
+                    >
+                        <FaWater size={iconSize} />
+                    </motion.div>
                     <div
                         className="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize"
-                        style={{ right: "-125px" }}
+                        style={{ right: "-135px" }}
                     >
-
                         <div>Water</div>
                         <div className="text-sm rounded-2xl px-3 py-1 bg-blue-400">54 Rides</div>
                     </div>
                 </div>
 
-                {/* Kids Ride */}
+                {/* === Kids Ride === */}
                 <div>
-                    <div className="absolute bottom-15 right-20 transform -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer z-20">
-                        <GiKidSlide size={50} />
-                    </div>
+                    <motion.div
+                        className="absolute bottom-15 right-20 transform -translate-x-1/2 -translate-y-1/2 z-20 hover:cursor-pointer"
+                        animate={{ scale: active === "kids" ? 1.2 : 1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        onClick={() => setActive("kids")}
+                    >
+                        <GiKidSlide size={iconSize} />
+                    </motion.div>
                     <div
                         className="absolute bottom-[60px] transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize"
                         style={{ right: "-80px" }}
                     >
-
                         <div>Kids</div>
                         <div className="text-sm rounded-2xl px-3 py-1 bg-blue-400">35 Rides</div>
                     </div>
