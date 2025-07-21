@@ -7,7 +7,6 @@ function App() {
     <>
       <div className="bg-blue-950 min-h-screen pt-10">
         <Header />
-        <span className="text-white flex justify-center mt-10 text-6xl font-extrabold">OUR ICONIC RIDES</span>
         <Middlesection />
       </div>
     </>
